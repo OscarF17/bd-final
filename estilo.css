@@ -1,0 +1,125 @@
+.separador{
+    height: 100px;
+    
+}
+
+.imagenes{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    
+    
+}
+
+.imagNoticias{
+    width: 100%;
+    height: 100%;
+}
+
+.TextoCarrusel{
+    color: red;
+}
+
+
+.carousel-inner{
+    align-content: center;
+}
+
+
+.bd-placeholder-img{
+    width:140px;
+    height:140px; 
+
+
+}
+
+.titulo{
+    align-self: center;
+    text-align: center;
+    font-size: 60px;
+}
+.titulo2{
+    align-self: center;
+    text-align: center;
+    font-size: 40px;
+}
+
+
+.badge{
+    background-color: red;
+}
+
+.subtitulo{
+    text-align: center;
+}
+
+.fotoServicios{
+    height: 40%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    
+}
+.imagNL{
+    width: 50px;
+    height: 50px;
+}
+
+.contenedor {
+    margin-top: 9px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 300px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+
+  .navbar{
+    background-color: red;
+  }
+
+
+  
+
+
+
+
+  .inputFechas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    background-color: rgb(225, 69, 240);
+    border-radius: 5px;
+    
+  }
+  
+  
+
+  
+
+  /* Media query para cambiar a una columna en pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .box {
+      width: 100%; /* Los divs ocupan el 100% del ancho del contenedor */
+    }
+
+    .contenedor{
+        height: 800px;
+    }
+  }
+  
+
+
+  

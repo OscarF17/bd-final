@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>Carousel Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilo.css">
+
+
+
+    
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Hotel Bonita</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="reservas.html">Reservar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Paquetes</a>
+          </li>
+        </ul>
+          <button class="btn btn-outline-success" type="submit">LogIn</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+
+
+
+  <div class="contenedor">
+    
+    <div class="inputFechas">
+        <form action="/buscar_hotel" method="GET">
+            <label for="fecha_llegada">Fecha de Llegada:</label>
+            <input type="date" id="fecha_llegada" name="fecha_llegada" required>
+          
+            <label for="fecha_salida"><b>Fecha de Salida:</b></label>
+            <input type="date" id="fecha_salida" name="fecha_salida" required>
+          
+            <label for="cantidad_adultos">Cantidad de Adultos:</label>
+            <select id="cantidad_adultos" name="cantidad_adultos" required>
+              <option disabled>Selecciona</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          
+            <button type="submit">Buscar</button>
+          </form>
+          
+          
+      </div>
+      
+    
+  </div>
+
+
+
+
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Sencilla</h2>
+        <p>Una cama queen size, Wi Fi, puerto de datos, A/C y TV con cable. Máximo 2 personas en habitación</p>
+        <p><a class="btn btn-secondary" href="#">Reservar &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Doble</h2>
+        <p>Dos camas dobles, Wi Fi, puerto de datos, A/C y TV con cable. Máximo 4 personas en habitación. A partir de la 3a persona se aplicará costo adicional.</p>
+        <p><a class="btn btn-secondary" href="#">Reservar &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Superior</h2>
+        <p>Una cama queen size, un sofá cama, cocineta (con microondas, cafetera y servibar), Wi Fi, puerto de datos, A/C y TV con cable</p>
+        <p><a class="btn btn-secondary" href="#">Reservar &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+</html>
