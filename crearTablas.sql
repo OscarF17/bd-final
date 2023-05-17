@@ -2,11 +2,6 @@ CREATE DATABASE IF NOT EXISTS Hotel;
 
 USE Hotel;
 
-CREATE TABLE IF NOT EXISTS promocion(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    porcentaje INT NOT NULL
-    );
-
 CREATE TABLE IF NOT EXISTS servicio(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(250) NOT NULL,
@@ -27,27 +22,21 @@ CREATE TABLE IF NOT EXISTS habitacion(
 );
 
 CREATE TABLE IF NOT EXISTS promocion_servicio(
+    id INT PRIMARY KEY AUTO_INCREMENT,
     servicio_id INT,
-    promocion_id INT,
-    PRIMARY KEY(servicio_id, promocion_id),
     fecha_inicio DATE NOT NULL,
     fecha_fin DATE NOT NULL,
     FOREIGN KEY (servicio_id)
-        REFERENCES servicio(id),
-    FOREIGN KEY(promocion_id)
-        REFERENCES promocion(id)
+        REFERENCES servicio(id)
 );
 
 CREATE TABLE IF NOT EXISTS promocion_habitacion(
+    id INT PRIMARY KEY AUTO_INCREMENT,
     tipo_id INT,
-    promocion_id INT,
-    PRIMARY KEY (tipo_id, promocion_id),
     fecha_inicio DATE NOT NULL,
     fecha_fin DATE NOT NULL,
     FOREIGN KEY (tipo_id)
-        REFERENCES tipo_habitacion(id),
-    FOREIGN KEY(promocion_id)
-        REFERENCES promocion(id)
+        REFERENCES tipo_habitacion(id)
 );
 
 CREATE TABLE IF NOT EXISTS usuario(
