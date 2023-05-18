@@ -79,6 +79,11 @@ def miCuenta():
     cursor.close()
     return render_template('miCuenta.html', reservaciones = reservaciones)
 
+@app.route('/comprarServicio', methods=['GET', 'POST'])
+def comprarServicio():
+    user_id = current_user.id
+    
+
 @app.route('/eliminarReservacion', methods=['GET', 'POST'])
 def eliminarReservacion():
     if request.method == 'POST':
@@ -113,6 +118,21 @@ def guardarCuenta():
         cur.connection.commit()
         cur.close()
     return redirect(url_for('login'))
+
+@app.route('/verificarDisponibilidad')
+def verificarDisponibilidad():
+    cur = db.connection.cursor()
+    tipo = 3
+    fecha = "2023-06-10"
+    dias = 10
+    output = None
+    cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
+    disponibilidad = cur.fetchall()
+    print(len(disponibilidad))
+    cur.nextset()
+    cur.connection.commit()
+    cur.close()
+    return "hola"
 
 def status_401(error):
     return redirect(url_for('login'))
