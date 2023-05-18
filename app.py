@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required
+from werkzeug.security import generate_password_hash 
 
 from config import config
 
@@ -75,6 +76,19 @@ def miCuenta():
 def crearCuenta():
     return render_template('crearCuenta.html')
 
+@app.route('/guardarCuenta', methods=['GET', 'POST'])
+def guardarCuenta():
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        nombre = request.form['nombre']
+        password = request.form['password']
+        p_hash = generate_password_hash(password) 
+        cur = db.connection.cursor()
+        cur.callproc("crearUsuario", [usuario, nombre, p_hash])
+        cur.nextset()        
+        cur.connection.commit()
+        cur.close()
+    return redirect(url_for('login'))
 
 def status_401(error):
     return redirect(url_for('login'))
