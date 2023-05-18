@@ -67,6 +67,7 @@ CREATE TABLE `habitacion` (
 
 LOCK TABLES `habitacion` WRITE;
 /*!40000 ALTER TABLE `habitacion` DISABLE KEYS */;
+INSERT INTO `habitacion` VALUES (101,1),(102,1),(103,1),(104,1),(105,1),(201,1),(202,1),(203,1),(204,1),(205,1),(301,1),(302,1),(303,1),(304,1),(305,1),(401,1),(402,1),(403,1),(404,1),(405,1),(106,2),(107,2),(108,2),(206,2),(207,2),(208,2),(306,2),(307,2),(308,2),(406,2),(407,2),(408,2),(109,3),(110,3),(209,3),(210,3),(309,3),(310,3),(409,3),(410,3);
 /*!40000 ALTER TABLE `habitacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,6 +207,7 @@ CREATE TABLE `reserva_habitacion` (
 
 LOCK TABLES `reserva_habitacion` WRITE;
 /*!40000 ALTER TABLE `reserva_habitacion` DISABLE KEYS */;
+INSERT INTO `reserva_habitacion` VALUES (1,101,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',3,8000.00),(1,103,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,104,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,105,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,201,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,202,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,203,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,204,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,205,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,301,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,302,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,303,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,304,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,305,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,401,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,402,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,403,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,404,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(1,405,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',2,7000.00),(2,102,'2023-05-18','2023-06-10','2023-06-14','Oscar Flores',3,8000.00);
 /*!40000 ALTER TABLE `reserva_habitacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +277,7 @@ CREATE TABLE `tipo_habitacion` (
   `nombre` varchar(100) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,6 +286,7 @@ CREATE TABLE `tipo_habitacion` (
 
 LOCK TABLES `tipo_habitacion` WRITE;
 /*!40000 ALTER TABLE `tipo_habitacion` DISABLE KEYS */;
+INSERT INTO `tipo_habitacion` VALUES (1,'Sencillo',1000.00),(2,'Doble',1500.00),(3,'Superior',2000.00);
 /*!40000 ALTER TABLE `tipo_habitacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,6 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18  0:12:39
-USE Hotel;
-GRANT ALL PRIVILEGES ON * TO hotelAdmin IDENTIFIED BY '666';
+-- Dump completed on 2023-05-18  1:06:18
