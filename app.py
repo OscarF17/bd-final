@@ -71,7 +71,14 @@ def home():
 @app.route('/miCuenta')
 @login_required
 def miCuenta():
-    return render_template('miCuenta.html')
+    user_id = current_user.id
+    cursor = db.connection.cursor()
+    cursor.callproc('buscarReservacionesUsuario', [user_id])
+    reservaciones = cursor.fetchall()
+    cursor.nextset()
+    cursor.connection.commit()
+    cursor.close()
+    return render_template('miCuenta.html', reservaciones = reservaciones)
 
 @app.route('/cenotes')
 @login_required
@@ -95,6 +102,27 @@ def bares():
 def reservas():
     return render_template('reservas.html')
 
+@app.route('/comprarServicio', methods=['GET', 'POST'])
+def comprarServicio():
+    user_id = current_user.id
+    
+
+@app.route('/eliminarReservacion', methods=['GET', 'POST'])
+def eliminarReservacion():
+    if request.method == 'POST':
+        user_id = current_user.id
+        numero = request.form['numero_habitacion']
+        fecha_inicio = request.form['fecha_inicio']
+        fecha_reservacion = request.form['fecha_reservacion']
+        cur = db.connection.cursor()
+        cur.callproc('borrarReservacion', [user_id, numero, fecha_reservacion, fecha_inicio])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('miCuenta')) 
+
+    else:
+        return "Error"
 
 @app.route('/crearCuenta')
 def crearCuenta():
@@ -113,6 +141,21 @@ def guardarCuenta():
         cur.connection.commit()
         cur.close()
     return redirect(url_for('login'))
+
+@app.route('/verificarDisponibilidad')
+def verificarDisponibilidad():
+    cur = db.connection.cursor()
+    tipo = 3
+    fecha = "2023-06-10"
+    dias = 10
+    output = None
+    cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
+    disponibilidad = cur.fetchall()
+    print(len(disponibilidad))
+    cur.nextset()
+    cur.connection.commit()
+    cur.close()
+    return "hola"
 
 def status_401(error):
     return redirect(url_for('login'))
