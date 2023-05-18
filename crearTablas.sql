@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS tipo_habitacion(
 );
 
 CREATE TABLE IF NOT EXISTS habitacion(
-    numero INT PRIMARY KEY, -- No incremental para tener numeros como 101, 202, 303 
+    numero INT PRIMARY KEY, 
     tipo_id INT,
     FOREIGN KEY (tipo_id)
         REFERENCES tipo_habitacion(id)
@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS usuario(
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     nombre VARCHAR(100) NOT NULL,
-    --correo VARCHAR(100) NOT NULL,
     password VARCHAR(250) NOT NULL
 );
 
@@ -68,7 +67,6 @@ CREATE TABLE IF NOT EXISTS reserva_habitacion(
     fecha_inicio DATE,
     fecha_fin DATE,
     PRIMARY KEY (usuario_id, numero_habitacion, fecha_reservacion, fecha_inicio),
-    -- Un usuario puede reservar la misma habitacion muchas veces, puede hacer muchas reservaciones en un día y puede coincidir en que reserva la misma habitacion el mismo día, pero en diferentes noches. No se puede todo a la vez
     nombre_titular VARCHAR(250) NOT NULL,
     personas INT NOT NULL,
     precio_compra DECIMAL(10,2) NOT NULL,
