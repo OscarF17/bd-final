@@ -1,0 +1,92 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign-in.css') }}">
+
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="home">Hotel Bonita</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="reservas.html">Reservar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Paquetes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="miCuenta">Mi Cuenta</a>
+              </li>
+            
+          </ul>
+            <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+<br><br><br>
+
+<body>
+    
+    <main class="form-signin w-100 m-auto">
+        <form action="/comprarServicio" method="POST">
+         
+          <h1 class="h3 mb-3 fw-normal">Reservar Cuartos</h1>
+      
+          
+          <div class="form-floating">
+              <input type="date" class="form-control" name="fechaEntrada" required >
+              <label for="fechaReserva">Fecha Reserva</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input type="date" class="form-control" name="fechaSalida" required >
+                <label for="fechaReserva">Fecha Reserva</label>
+              </div>
+              <br>
+            <div class="form-floating">
+                
+                <select id="cantidad_adultos" name="cantidad_adultos" class="form-control" required>
+                    <option disabled>Selecciona</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+              
+            </select>
+            <label for="cantidad_adultos">Cantidad de adultos</label>
+              </div>
+
+
+              
+          <br>
+      
+          
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Mostrar Cuartos</button>
+          
+        </form>
+      </main>
+
+
+</body>
+    
+    
+
+{% endblock %}

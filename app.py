@@ -90,6 +90,11 @@ def bares():
     return render_template('bares.html')
 
 
+@app.route('/reservas')
+@login_required
+def reservas():
+    return render_template('reservas.html')
+
 
 @app.route('/crearCuenta')
 def crearCuenta():

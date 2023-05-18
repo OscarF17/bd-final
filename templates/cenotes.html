@@ -46,27 +46,36 @@
     <div id="divServicios">
         <div id="izquierda">
           <div id="titulo">
-            Cenotes</div>
-          <div id="imagen">Tour de Cenotes</div>
-          <div id="descripcion">Descripción</div>
+            <h2>Tour de Cenotes</h2>
+            </div>
+          <div id="imagen"><img src="{{ url_for('static', filename='img/cenotes.webp') }}" class="imagenesServicios"></div>
+          <div id="descripcion">Embárcate en una aventura única en nuestro tour de cenotes. Descubre la magia de estas maravillas naturales mientras nadamos, buceamos y exploramos cuevas cristalinas. Todos los días a las 10 am y 12 pm, te sumergirás en un mundo fascinante, guiado por expertos locales. ¡Una experiencia inolvidable para conectarte con la naturaleza!</div>
         </div>
         <div id="derecha">
             <main class="form-signin w-100 m-auto">
-                <form >
+                <form action="/comprarServicio" method="POST">
                  
-                  <h1 class="h3 mb-3 fw-normal">Actualizar Información</h1>
+                  <h1 class="h3 mb-3 fw-normal">Reservar</h1>
               
                   
                   <div class="form-floating">
-                      <input type="date" class="form-control" name="fechaReserva" >
+                      <input type="date" class="form-control" name="fechaReserva" required >
                       <label for="fechaReserva">Fecha Reserva</label>
                     </div>
                     <br>
-                   
+                    <div class="form-floating">
+                        <label for="horario" ></label>
+                        <select id="horario" name="horario" class="form-control" required>
+                            <option disabled selected>Selecciona un horario</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            
+                          </select>
+                      </div>
                   <br>
               
                   
-                  <button class="w-100 btn btn-lg btn-primary" type="submit">Reservar</button>
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Mandar reserva</button>
                   
                 </form>
               </main>
