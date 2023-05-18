@@ -10,17 +10,57 @@ BEGIN
 END ..
 DELIMITER ;
 
--- Buscar las reservaciones de un usuario
 DELIMITER ..
 CREATE PROCEDURE buscarReservacionesUsuario(
     IN inUser_id INT 
 )
 BEGIN
-    SELECT tipo_habitacion.nombre, fecha_inicio, nombre_titular FROM reserva_habitacion, habitacion, tipo_habitacion WHERE
+    DECLARE currentDate DATE;
+    SET currentDate = CURDATE(); -- Obtener la fecha actual
+
+    -- Regresar todo para tener los datos listos
+    SELECT * FROM reserva_habitacion, habitacion, tipo_habitacion WHERE
         reserva_habitacion.usuario_id = inUser_id
         AND reserva_habitacion.numero_habitacion = habitacion.numero
-        AND habitacion.tipo_id = tipo_habitacion.id;
+        AND habitacion.tipo_id = tipo_habitacion.id
+        AND fecha_inicio > currentDate; -- Filtrar por fecha de inicio posterior a la fecha actual
 END ..
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE borrarReservacion(
+    IN in_usuario_id INT,
+    IN in_numero_habitacion INT,
+    IN in_fecha_reservacion DATE,
+    IN in_fecha_inicio DATE
+)
+BEGIN
+    DELETE FROM reserva_habitacion
+    WHERE usuario_id = in_usuario_id
+    AND numero_habitacion = in_numero_habitacion
+    AND fecha_reservacion = in_fecha_reservacion
+    AND fecha_inicio = in_fecha_inicio;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE deleteReservation(
+    IN in_usuario_id INT,
+    IN in_numero_habitacion INT,
+    IN in_fecha_reservacion DATE,
+    IN in_fecha_inicio DATE
+)
+BEGIN
+    DELETE FROM reserva_habitacion
+    WHERE usuario_id = in_usuario_id
+    AND numero_habitacion = in_numero_habitacion
+    AND fecha_reservacion = in_fecha_reservacion
+    AND fecha_inicio = in_fecha_inicio;
+END //
+
 DELIMITER ;
     
 DELIMITER //
