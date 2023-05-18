@@ -4,9 +4,9 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG=True
     MYSQL_HOST = 'localhost'
-    MYSQL_USER = 'root'
-    MYSQL_PASSWORD = ''
-    MYSQL_DB = 'hotel'
+    MYSQL_USER = 'hotelAdmin'
+    MYSQL_PASSWORD = '666'
+    MYSQL_DB = 'Hotel'
 
 config={
     'development': DevelopmentConfig

@@ -13,6 +13,13 @@ from models.entities.User import User
 
 app = Flask(__name__)
 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'hotelAdmin'
+app.config['MYSQL_PASSWORD'] = '666'
+app.config['MYSQL_DB'] = 'Hotel'
+app.config['SECRET_KEY'] = 'B!1w8NAt1T^%kvhUI*S^'
+
+
 db=MySQL(app)
 login_manager_app = LoginManager(app)
 
