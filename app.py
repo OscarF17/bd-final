@@ -80,7 +80,7 @@ def miCuenta():
     cursor.close()
     return render_template('miCuenta.html', reservaciones = reservaciones)
 
-@app.route('/reservarHabitacion', methods=['GET', 'POST']
+@app.route('/reservarHabitacion', methods=['GET', 'POST'])
 def reservarHabitacion():
 
     return redirect(url_for('miCuenta'))
