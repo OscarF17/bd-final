@@ -70,8 +70,31 @@ def home():
 @app.route('/miCuenta')
 @login_required
 def miCuenta():
-    return render_template('miCuenta.html')
+    user_id = current_user.id
+    cursor = db.connection.cursor()
+    cursor.callproc('buscarReservacionesUsuario', [user_id])
+    reservaciones = cursor.fetchall()
+    cursor.nextset()
+    cursor.connection.commit()
+    cursor.close()
+    return render_template('miCuenta.html', reservaciones = reservaciones)
 
+@app.route('/eliminarReservacion', methods=['GET', 'POST'])
+def eliminarReservacion():
+    if request.method == 'POST':
+        user_id = current_user.id
+        numero = request.form['numero_habitacion']
+        fecha_inicio = request.form['fecha_inicio']
+        fecha_reservacion = request.form['fecha_reservacion']
+        cur = db.connection.cursor()
+        cur.callproc('borrarReservacion', [user_id, numero, fecha_reservacion, fecha_inicio])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('miCuenta')) 
+
+    else:
+        return "Error"
 
 @app.route('/crearCuenta')
 def crearCuenta():

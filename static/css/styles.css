@@ -178,3 +178,12 @@
   }
 
   
+  .table-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    td, th {
+        padding: 10px 5px;
+    }
+

@@ -45,22 +45,6 @@ END //
 
 DELIMITER ;
 
-DELIMITER //
-
-CREATE PROCEDURE deleteReservation(
-    IN in_usuario_id INT,
-    IN in_numero_habitacion INT,
-    IN in_fecha_reservacion DATE,
-    IN in_fecha_inicio DATE
-)
-BEGIN
-    DELETE FROM reserva_habitacion
-    WHERE usuario_id = in_usuario_id
-    AND numero_habitacion = in_numero_habitacion
-    AND fecha_reservacion = in_fecha_reservacion
-    AND fecha_inicio = in_fecha_inicio;
-END //
-
 DELIMITER ;
     
 DELIMITER //
