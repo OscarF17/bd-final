@@ -1,0 +1,88 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign-in.css') }}">
+
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="home">Hotel Bonita</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="reservas.html">Reservar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Paquetes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="miCuenta">Mi Cuenta</a>
+              </li>
+          </ul>
+            <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+<br><br><br>
+
+<body>
+    <div id="divServicios">
+        <div id="izquierda">
+          <div id="titulo">
+            <h2>Tour de Cenotes</h2>
+            </div>
+          <div id="imagen"><img src="{{ url_for('static', filename='img/cenotes.webp') }}" class="imagenesServicios"></div>
+          <div id="descripcion">Embárcate en una aventura única en nuestro tour de cenotes. Descubre la magia de estas maravillas naturales mientras nadamos, buceamos y exploramos cuevas cristalinas. Todos los días a las 10 am y 12 pm, te sumergirás en un mundo fascinante, guiado por expertos locales. ¡Una experiencia inolvidable para conectarte con la naturaleza!</div>
+        </div>
+        <div id="derecha">
+            <main class="form-signin w-100 m-auto">
+                <form action="/comprarServicio" method="POST">
+                 
+                  <h1 class="h3 mb-3 fw-normal">Reservar</h1>
+              
+                  
+                  <div class="form-floating">
+                      <input type="date" class="form-control" name="fechaReserva" required >
+                      <label for="fechaReserva">Fecha Reserva</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <label for="horario" ></label>
+                        <select id="horario" name="horario" class="form-control" required>
+                            <option disabled selected>Selecciona un horario</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            
+                          </select>
+                      </div>
+                  <br>
+              
+                  
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Mandar reserva</button>
+                  
+                </form>
+              </main>
+        </div>
+      </div>
+</body>
+    
+    
+
+{% endblock %}

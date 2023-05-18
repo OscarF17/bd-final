@@ -1,0 +1,79 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign-in.css') }}">
+
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="home">Hotel Bonita</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="reservas.html">Reservar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Paquetes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="miCuenta">Mi Cuenta</a>
+              </li>
+          </ul>
+            <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+<br><br><br>
+
+<body>
+    <div id="divServicios">
+        <div id="izquierda">
+          <div id="titulo">
+            Bares</div>
+          <div id="imagen">Tour de Cenotes</div>
+          <div id="descripcion">Descripción</div>
+        </div>
+        <div id="derecha">
+            <main class="form-signin w-100 m-auto">
+                <form >
+                 
+                  <h1 class="h3 mb-3 fw-normal">Actualizar Información</h1>
+              
+                  
+                  <div class="form-floating">
+                      <input type="date" class="form-control" name="fechaReserva" >
+                      <label for="fechaReserva">Fecha Reserva</label>
+                    </div>
+                    <br>
+                   
+                  <br>
+              
+                  
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Reservar</button>
+                  
+                </form>
+              </main>
+        </div>
+      </div>
+</body>
+    
+    
+
+{% endblock %}

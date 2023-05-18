@@ -63,6 +63,7 @@ def logout():
 
 
 @app.route('/home')
+@login_required
 def home():
     print(current_user.id)
     return render_template('home.html')
@@ -78,6 +79,28 @@ def miCuenta():
     cursor.connection.commit()
     cursor.close()
     return render_template('miCuenta.html', reservaciones = reservaciones)
+
+@app.route('/cenotes')
+@login_required
+def cenotes():
+    return render_template('cenotes.html')
+
+
+@app.route('/taxi')
+@login_required
+def taxi():
+    return render_template('taxi.html')
+
+@app.route('/bares')
+@login_required
+def bares():
+    return render_template('bares.html')
+
+
+@app.route('/reservas')
+@login_required
+def reservas():
+    return render_template('reservas.html')
 
 @app.route('/comprarServicio', methods=['GET', 'POST'])
 def comprarServicio():
