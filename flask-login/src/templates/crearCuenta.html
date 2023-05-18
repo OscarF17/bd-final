@@ -1,0 +1,55 @@
+
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign-in.css') }}">
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<body class="text-center">
+    
+    <main class="form-signin w-100 m-auto">
+      <form >
+       
+        <h1 class="h3 mb-3 fw-normal">Crear Cuenta</h1>
+    
+        <div class="form-floating">
+          <input class="form-control" name="usuario" >
+          <label for="usuario">Usuario</label>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" name="nombre" >
+            <label for="nombre">Nombre</label>
+          </div>
+         <div class="form-floating">
+          <input class="form-control" name="password" >
+          <label for="password">Password</label>
+        </div>
+        
+    
+        <div class="checkbox mb-3">
+            <a href="login">Regresar</a>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+        
+      </form>
+    </main>
+    
+    
+    <script src="js/bootstrap.min.js"></script>
+    
+      </body>
+
+{% endblock %}
+
+
