@@ -26,13 +26,13 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link" href="reservas">Reservar</a>
+              <a class="nav-link active" href="reservas.html">Reservar</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Paquetes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="miCuenta">Mi Cuenta</a>
+                <a class="nav-link " href="miCuenta">Mi Cuenta</a>
               </li>
           </ul>
             <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
@@ -42,49 +42,37 @@
   </header>
 <br><br><br>
 
-<body class="text-center">
-    
-<h1>Datos de la cuenta</h1>
-<h1>Bienvenido, {{ current_user.nombre }}</h1>
-
-    
-    <br>
-    <main class="form-signin w-100 m-auto">
-        <form >
-         
-          <h1 class="h3 mb-3 fw-normal">Actualizar Informacion</h1>
-      
-          
-          <div class="form-floating">
-              <input class="form-control" name="nombre" >
-              <label for="nombre">Nombre</label>
-            </div>
-            <br>
-           <div class="form-floating">
-            <input class="form-control" name="password" >
-            <label for="password">Nueva Contraseña</label>
-          </div>
-          <br>
-      
-          
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Actualizar Informacion</button>
-          
-        </form>
-      </main>
-
-    <br>
-    <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
-
-
+<body>
+    <div id="divServicios">
+        <div id="izquierda">
+          <div id="titulo">
+            Bares</div>
+          <div id="imagen">Tour de Cenotes</div>
+          <div id="descripcion">Descripción</div>
+        </div>
+        <div id="derecha">
+            <main class="form-signin w-100 m-auto">
+                <form >
+                 
+                  <h1 class="h3 mb-3 fw-normal">Actualizar Información</h1>
+              
+                  
+                  <div class="form-floating">
+                      <input type="date" class="form-control" name="fechaReserva" >
+                      <label for="fechaReserva">Fecha Reserva</label>
+                    </div>
+                    <br>
+                   
+                  <br>
+              
+                  
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Reservar</button>
+                  
+                </form>
+              </main>
+        </div>
+      </div>
 </body>
-
-
-<body class="text-center">
-    
-</body>
-
-
-
     
     
 

@@ -177,4 +177,41 @@
     background-color: red;
   }
 
-  
+
+    #divServicios {
+      width: 70%;
+      height: 600px;
+      background-color: yellow;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+    }
+
+    #izquierda {
+      flex-basis: 66.67%; /* 2/3 */
+      background-color: red; /* solo para ilustrar la parte izquierda */
+      display: flex;
+      flex-direction: column;
+    }
+
+    #titulo {
+      flex-basis: 20%;
+      background-color: green; /* solo para ilustrar el título */
+      justify-content: center;
+      text-align: center;
+    }
+
+    #imagen {
+      flex-basis: 60%;
+      background-color: orange; /* solo para ilustrar la imagen */
+    }
+
+    #descripcion {
+      flex-basis: 20%;
+      background-color: purple; /* solo para ilustrar la descripción */
+    }
+
+    #derecha {
+      flex-basis: 33.33%; /* 1/3 */
+      background-color: blue; /* solo para ilustrar la parte derecha */
+    }

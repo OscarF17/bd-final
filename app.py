@@ -63,6 +63,7 @@ def logout():
 
 
 @app.route('/home')
+@login_required
 def home():
     print(current_user.id)
     return render_template('home.html')
@@ -71,6 +72,23 @@ def home():
 @login_required
 def miCuenta():
     return render_template('miCuenta.html')
+
+@app.route('/cenotes')
+@login_required
+def cenotes():
+    return render_template('cenotes.html')
+
+
+@app.route('/taxi')
+@login_required
+def taxi():
+    return render_template('taxi.html')
+
+@app.route('/bares')
+@login_required
+def bares():
+    return render_template('bares.html')
+
 
 
 @app.route('/crearCuenta')
