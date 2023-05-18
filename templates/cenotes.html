@@ -35,7 +35,7 @@
                 <a class="nav-link " href="miCuenta">Mi Cuenta</a>
               </li>
           </ul>
-            <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
+          <a class="btn btn-outline-success" style="color:red; border-color: red;" href="{{ url_for('logout') }}">Salir</a>
         </div>
       </div>
     </nav>
@@ -46,7 +46,9 @@
     <div id="divServicios">
         <div id="izquierda">
           <div id="titulo">
-            <h2>Tour de Cenotes</h2>
+            <br>
+            <br>
+            <h2>Tour de Cenotes $500</h2>
             </div>
           <div id="imagen"><img src="{{ url_for('static', filename='img/cenotes.webp') }}" class="imagenesServicios"></div>
           <div id="descripcion">Embárcate en una aventura única en nuestro tour de cenotes. Descubre la magia de estas maravillas naturales mientras nadamos, buceamos y exploramos cuevas cristalinas. Todos los días a las 10 am y 12 pm, te sumergirás en un mundo fascinante, guiado por expertos locales. ¡Una experiencia inolvidable para conectarte con la naturaleza!</div>
@@ -55,7 +57,7 @@
             <main class="form-signin w-100 m-auto">
                 <form action="/comprarServicio" method="POST">
                  
-                  <h1 class="h3 mb-3 fw-normal">Reservar</h1>
+                  <h1 class="h3 mb-3 fw-normal">Reservar Tour Cenotes</h1>
               
                   
                   <div class="form-floating">

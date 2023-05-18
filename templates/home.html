@@ -37,7 +37,7 @@
                 <a class="nav-link" href="miCuenta">Mi Cuenta</a>
               </li>
           </ul>
-            <a class="btn btn-outline-success" href="{{ url_for('logout') }}">Salir</a>
+          <a class="btn btn-outline-success" style="color:red; border-color: red;" href="{{ url_for('logout') }}">Salir</a>
         </div>
       </div>
     </nav>
@@ -59,9 +59,9 @@
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
           <div class="container">
             <div class="carousel-caption ">
-              <h1>Palacio de Gobierno</h1>
-              <p> Edificio en el que reside el poder ejecutivo del Estado de Nuevo Leon</p>
-              <p><a class="btn btn-lg btn-primary" href="https://www.google.com/maps/place/Palacio+de+Gobierno+del+Estado+de+Nuevo+León/@25.6724092,-100.3093727,15z/data=!4m2!3m1!1s0x0:0xc0e3ee8c998b975b?sa=X&ved=2ahUKEwiJ_N-nq-79AhV8DEQIHQEFDoYQ_BJ6BAhUEAg">Como llegar</a></p>
+              <h1>Reserva nestros lujosos cuartos</h1>
+              <p> Teneos varias opciones que se acomodan a ti</p>
+              <p><a class="btn btn-lg btn-primary" href="reservas">Reservar</a></p>
             </div>
           </div>
         </div>
@@ -110,19 +110,19 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <img src="{{ url_for('static', filename='img/cenotes.webp') }}" class="bd-placeholder-img rounded-circle">
         <h2 class="fw-normal">Tour Cenotes</h2>
         <p>Explora la belleza oculta de los cenotes en este tour: natación, snorkel y maravíllate con estas joyas naturales subterráneas</p>
         <p><a class="btn btn-secondary" href="cenotes">Reservar </a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <img src="{{ url_for('static', filename='img/taxi.jpg') }}" class="bd-placeholder-img rounded-circle">
         <h2 class="fw-normal">Servicio Taxi</h2>
         <p>Nuestro servicio de taxi confiable y conveniente ofrece traslados seguros y eficientes entre el hotel y el aeropuerto</p>
         <p><a class="btn btn-secondary" href="taxi">Reservar </a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <img src="{{ url_for('static', filename='img/bares.jpg') }}" class="bd-placeholder-img rounded-circle">
         <h2 class="fw-normal">Tour Bares</h2>
         <p>Disfruta de una noche llena de diversión y bebidas en nuestro tour de bares: música, baile y experiencias inolvidables</p>
         <p><a class="btn btn-secondary" href="bares">Reservar </a></p>
