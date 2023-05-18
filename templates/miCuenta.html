@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<h1>Datos de la cuenta</h1>
+
+<center><h1>Bienvenido, {{ current_user.nombre  }}, {{ current_user.username  }}</h1>
+    <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
+    </center>
+
+{% endblock %}
