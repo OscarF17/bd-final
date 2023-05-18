@@ -41,10 +41,8 @@ CREATE TABLE IF NOT EXISTS promocion_habitacion(
 
 CREATE TABLE IF NOT EXISTS usuario(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    primer_nombre VARCHAR(100) NOT NULL,
-    segundo_nombre VARCHAR(100),
-    apellido_paterno VARCHAR(100) NOT NULL,
-    apellido_materno VARCHAR(100),
+    username VARCHAR(50) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     correo VARCHAR(100) NOT NULL,
     password VARCHAR(250) NOT NULL
 );
