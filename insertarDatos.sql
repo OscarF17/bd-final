@@ -43,19 +43,6 @@ INSERT INTO promocion_servicio (servicio_id, fecha_inicio, fecha_fin) VALUES
     (3, '2022-10-05', '2022-10-15'),
     (2, '2022-11-20', '2022-11-30');
 
-INSERT INTO usuario (primer_nombre, segundo_nombre, apellido_paterno, apellido_materno, correo, password) VALUES
-    ('John', 'Doe', 'Smith', 'Johnson', 'john.doe@example.com', 'AAA'),
-    ('Jane', 'Doe', 'Brown', 'Davis', 'jane.doe@example.com', 'AAA'),
-    ('Michael', 'Smith', 'Johnson', 'Williams', 'michael.smith@example.com', 'AAA'),
-    ('Emily', 'Grace', 'Taylor', 'Anderson', 'emily.grace@example.com', 'AAA'),
-    ('David', 'Robert', 'Clark', 'Harris', 'david.robert@example.com', 'AAA'),
-    ('Sarah', 'Elizabeth', 'Thomas', 'Lewis', 'sarah.elizabeth@example.com', 'AAA'),
-    ('Matthew', 'James', 'Martin', 'Walker', 'matthew.james@example.com', 'AAA'),
-    ('Olivia', 'Sophia', 'Lee', 'Allen', 'olivia.sophia@example.com', 'AAA'),
-    ('Andrew', 'Daniel', 'Young', 'Nelson', 'andrew.daniel@example.com', 'AAA'),
-    ('Emma', 'Ava', 'Robinson', 'Baker', 'emma.ava@example.com', 'AAA'),
-    ("Oscar", "Luciano", "Flores", "Leija", "oscar.floresl@udem.edu", "666");
-
 INSERT INTO contrato_servicio (usuario_id, servicio_id, fecha_compra, fecha_inicio, nombre_titular, precio_compra) VALUES 
     (1, 1, '2023-01-09', '2023-01-10','John Doe', 800),
     (2, 3, '2023-01-11', '2023-02-10','Jane Smith', 1000),
