@@ -190,3 +190,32 @@ BEGIN
     (user_id, servicio, fecha_actual, fecha, horario, p);
 END ..
 DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE obtenerDatosPaquetes(
+)
+BEGIN
+    SELECT * FROM paquete;
+END..
+DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE reservarPaquete(
+    IN user_id INT,
+    IN pid INT,
+    IN fecha DATE,
+    IN dias INT
+)
+BEGIN
+    DECLARE currentDate DATE;
+    DECLARE p DECIMAL(10,2);
+    DECLARE fecha2 DATE;
+
+    SET currentDate = CURDATE();
+    SET p = (SELECT precio FROM paquete WHERE id = pid);
+    SET fecha2 = DATE_ADD(fecha, INTERVAL dias DAY);
+    INSERT INTO reserva_paquete (usuario_id, paquete_id, fecha_compra, fecha_inicio, fecha_fin, precio_compra) VALUES
+    (user_id, pid, currentDate, fecha, fecha2, p);
+END ..
+DELIMITER ;
+

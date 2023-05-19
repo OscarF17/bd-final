@@ -84,7 +84,7 @@ CREATE TABLE `paquete` (
   `nombre` varchar(250) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +93,7 @@ CREATE TABLE `paquete` (
 
 LOCK TABLES `paquete` WRITE;
 /*!40000 ALTER TABLE `paquete` DISABLE KEYS */;
+INSERT INTO `paquete` VALUES (1,'Paquete empresario',1000.00),(2,'Paquete familiar',2500.00);
 /*!40000 ALTER TABLE `paquete` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,6 +123,7 @@ CREATE TABLE `paquete_incluye` (
 
 LOCK TABLES `paquete_incluye` WRITE;
 /*!40000 ALTER TABLE `paquete_incluye` DISABLE KEYS */;
+INSERT INTO `paquete_incluye` VALUES (1,1,2),(2,3,1);
 /*!40000 ALTER TABLE `paquete_incluye` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,6 +241,7 @@ CREATE TABLE `reserva_paquete` (
 
 LOCK TABLES `reserva_paquete` WRITE;
 /*!40000 ALTER TABLE `reserva_paquete` DISABLE KEYS */;
+INSERT INTO `reserva_paquete` VALUES (2,1,'2023-05-18','2023-08-31','2023-09-03',1000.00);
 /*!40000 ALTER TABLE `reserva_paquete` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18 22:36:24
+-- Dump completed on 2023-05-18 23:18:05

@@ -72,21 +72,21 @@
     <div id="divServicios">
       <div id="izquierda">
         <div class="seccion">
-          <h2>Paquete 1</h2>
+          <h2>Paquete Empresarial</h2>
           <p>Habitacion: Sencilla</p>
           <p>Servicios: Servicio Taxi</p>
           <p>Precio: 1000$</p>
         </div>
         <div class="seccion">
-          <h2>Paquete 2</h2>
+          <h2>Paquete Familiar</h2>
           <p>Habitacion: Superior</p>
-          <p>Servicios: Servicio Taxi, Tour Bares, Tour Cenotes</p>
+          <p>Servicios: Servicio Taxi y Tour Cenotes</p>
           <p>Precio: 2500$</p>
         </div>
       </div>
       <div id="derecha">
         <main class="form-signin w-100 m-auto">
-            <form action="/comprarServicio" method="POST">
+            <form action="/reservarPaquete" method="POST">
              
                 <h1 class="h3 mb-3 fw-normal">Reservar Paquete</h1>
 
@@ -94,8 +94,9 @@
                     <label for="paqueteID" ></label>
                     <select id="paqueteID" name="paqueteID" class="form-control" required>
                         <option disabled selected>Selecciona un Paquete</option>
-                        <option value="2">1</option>
-                        <option value="1">2</option>
+                        {% for i in range(numPaquetes) %}
+                            <option value={{ paquetes[i][0] }}>{{ paquetes[i][0] }}</option>
+                        {% endfor %}
                         
                     </select>
                 </div>

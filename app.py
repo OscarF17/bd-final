@@ -38,8 +38,6 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # print(request.form['username'])
-        # print(request.form['password'])
         user = User(0, request.form['username'], request.form['password'])
         logged_user = ModelUser.login(db, user)
         if logged_user != None:
@@ -64,7 +62,6 @@ def logout():
 @app.route('/home')
 @login_required
 def home():
-    print(current_user.id)
     return render_template('home.html')
 
 @app.route('/miCuenta')
@@ -103,6 +100,7 @@ def reservas():
     return render_template('reservas.html')
 
 @app.route('/reservarHabitacion', methods=['GET', 'POST'])
+@login_required
 def reservarHabitacion():
     if request.method == 'POST':
         user_id = current_user.id
@@ -131,8 +129,31 @@ def reservarHabitacion():
 @app.route('/paquetes')
 @login_required
 def paquetes():
-    print(current_user.id)
-    return render_template('paquetes.html')
+    cur = db.connection.cursor()
+    cur.callproc('obtenerDatosPaquetes')
+    paquetes = cur.fetchall()
+    numPaquetes = len(paquetes)
+    cur.nextset()
+    cur.connection.commit()
+    cur.close()
+    return render_template('paquetes.html', paquetes=paquetes, numPaquetes=numPaquetes)
+
+@app.route('/reservarPaquete', methods=['POST', 'GET'])
+@login_required
+def reservarPaquete():
+    if request.method == 'POST':
+        user_id = current_user.id
+        paquete_id = request.form['paqueteID']
+        fecha_inicio = request.form['fechaReserva']
+        dias = request.form['dias']
+        cur = db.connection.cursor()
+        cur.callproc('reservarPaquete', [user_id, paquete_id, fecha_inicio, dias])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('miCuenta'))
+    else:
+        return "Error"
 
 
 ### RUTAS ADMIN
@@ -146,7 +167,6 @@ def admin():
         cur.nextset()
         cur.connection.commit()
         cur.close()
-        print(datos[0])
         return render_template('admin.html', datos=datos, numDatos=len(datos))
     else:
         return "<h1>Acceso denegado</h1>"
@@ -202,15 +222,13 @@ def bares():
     return render_template('bares.html')
 
 @app.route('/comprarServicio/<string:servicio_id>', methods=['GET', 'POST'])
+@login_required
 def comprarServicio(servicio_id):
     if request.method == 'POST':
         servicio = int(servicio_id)
-        print(servicio)
         user_id = current_user.id
         fecha_reserva = request.form['fechaReserva']
-        print(fecha_reserva)
         hora = request.form['horario']
-        print(hora)
         cur = db.connection.cursor()
         cur.callproc('reservarServicio', [user_id, servicio_id, fecha_reserva, hora])
         cur.nextset()
@@ -224,6 +242,7 @@ def comprarServicio(servicio_id):
         return "Error"
 
 @app.route('/eliminarReservacion', methods=['GET', 'POST'])
+@login_required
 def eliminarReservacion():
     if request.method == 'POST':
         user_id = current_user.id
@@ -241,10 +260,12 @@ def eliminarReservacion():
         return "Error"
 
 @app.route('/crearCuenta')
+@login_required
 def crearCuenta():
     return render_template('crearCuenta.html')
 
 @app.route('/guardarCuenta', methods=['GET', 'POST'])
+@login_required
 def guardarCuenta():
     if request.method == 'POST':
         usuario = request.form['usuario']
@@ -261,6 +282,7 @@ def guardarCuenta():
         return "Error"
 
 @app.route('/verificarDisponibilidad')
+@login_required
 def verificarDisponibilidad():
     cur = db.connection.cursor()
     tipo = 3
@@ -269,7 +291,6 @@ def verificarDisponibilidad():
     output = None
     cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
     disponibilidad = cur.fetchall()
-    print(len(disponibilidad))
     cur.nextset()
     cur.connection.commit()
     cur.close()
