@@ -293,12 +293,10 @@ def eliminarReservacion():
         return "Error"
 
 @app.route('/crearCuenta')
-@login_required
 def crearCuenta():
     return render_template('crearCuenta.html')
 
 @app.route('/guardarCuenta', methods=['GET', 'POST'])
-@login_required
 def guardarCuenta():
     if request.method == 'POST':
         usuario = request.form['usuario']
