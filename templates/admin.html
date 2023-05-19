@@ -89,44 +89,45 @@
     <div class="container">
         <div class="top">
             <center>
-            <h1>Tabla Actualizada Cuartos</h1>
+            <h1>Costos de los tipos de habitaciónes</h1>
             <br>
             <table>
                 <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
+                  <td>id</td>
+                  {% for i in range(numDatos) %} 
+                    <td>{{ datos[i][0] }}</td>
+                  {% endfor %}
                 </tr>
                 <tr>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
+                  <td>Nombre</td>
+                  {% for i in range(numDatos) %} 
+                    <td>{{ datos[i][1] }}</td>
+                  {% endfor %}
                 </tr>
                 <tr>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
+                  <td>Precio</td>
+                  {% for i in range(numDatos) %} 
+                    <td>{{ datos[i][2] }}</td>
+                  {% endfor %}
                 </tr>
               </table>
             </center>
         </div>
         <div class="bottom">
             <main class="form-signin w-100 m-auto">
-                <form action="/comprarServicio" method="POST">
+                <form action="/actualizarPrecios" method="POST">
                  
                   <center><h1 class="h3 mb-3 fw-normal">Actualizar Precio</h1></center>
               
                   
                   
                     <div class="form-floating">
-                        <label for="horario" ></label>
-                        <select id="horario" name="horario" class="form-control" required>
-                            <option disabled selected>Selecciona id cuarto</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-
-                            
+                        <label for="id_tipo" ></label>
+                        <select id="id_tipo" name="id_tipo" class="form-control" required>
+                            <option disabled selected>Selecciona id del tipo de habitación</option>
+                            {% for i in range(numDatos) %}
+                                <option value={{datos[i][0]}}>{{datos[i][0]}}</option>
+                            {% endfor %}
                           </select>
                       </div>
                       <br>

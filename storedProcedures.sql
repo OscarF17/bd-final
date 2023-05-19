@@ -141,3 +141,23 @@ BEGIN
     
 END //
 DELIMITER ;
+
+
+DELIMITER ..
+CREATE PROCEDURE obtenerDatosTipo(
+)
+BEGIN
+    SELECT * FROM tipo_habitacion;
+END ..
+DELIMITER ;
+
+
+DELIMITER ..
+CREATE PROCEDURE actualizarPrecioTipo(
+    IN tipo INT,
+    IN nuevo_precio DECIMAL(10,2)
+)
+BEGIN
+    UPDATE tipo_habitacion SET precio=nuevo_precio WHERE id = tipo;
+END ..
+DELIMITER ;

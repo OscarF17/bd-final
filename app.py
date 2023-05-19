@@ -80,7 +80,29 @@ def paquetes():
 @login_required
 def admin():
     if current_user.username == 'pato123':
-        return render_template('admin.html')
+        cur = db.connection.cursor()
+        cur.callproc('obtenerDatosTipo')
+        datos = cur.fetchall()
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        print(datos[0])
+        return render_template('admin.html', datos=datos, numDatos=len(datos))
+    else:
+        return "<h1>Acceso denegado</h1>"
+
+@app.route('/actualizarPrecios', methods=['POST'])
+@login_required
+def actualizarPrecios():
+    if current_user.username == 'pato123' and request.method == 'POST':
+        tipo_id = request.form['id_tipo']
+        nuevoPrecio = request.form['nuevoPrecio']
+        cur = db.connection.cursor()
+        cur.callproc('actualizarPrecioTipo', [tipo_id, nuevoPrecio])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('admin')) 
     else:
         return "<h1>Acceso denegado</h1>"
     
