@@ -82,8 +82,30 @@ def miCuenta():
 
 @app.route('/reservarHabitacion', methods=['GET', 'POST'])
 def reservarHabitacion():
+    if request.method == 'POST':
+        user_id = current_user.id
+        fecha= request.form['fechaEntrada']
+        dias = request.form['dias']
+        tipo = request.form['tipo_cuarto']
+        personas = request.form['cantidad_adultos']
+        titular = request.form['titular']
 
-    return redirect(url_for('miCuenta'))
+        cur = db.connection.cursor()
+        cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
+        disponibilidad = cur.fetchall()
+        cur.nextset()
+        if len(disponibilidad) > 0:
+            cur.callproc("agregarReservacion", [user_id, tipo, fecha, dias, titular, personas])
+            cur.nextset()
+            cur.connection.commit()
+            cur.close()
+            return redirect(url_for('miCuenta'))
+
+        else:
+            cur.connection.commit()
+            cur.close()
+            return "No hay habitaciones disponibles en estas fechas"
+
 
 @app.route('/cenotes')
 @login_required
