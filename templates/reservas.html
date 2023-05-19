@@ -53,12 +53,12 @@
           
           <div class="form-floating">
               <input type="date" class="form-control" name="fechaEntrada" required >
-              <label for="fechaReserva">Fecha Reserva</label>
-            </div>
+              <label for="fechaEntrada">Fecha Entrada</label>
+          </div>
             <br>
-            <div class="form-floating">
-                <input type="date" class="form-control" name="fechaSalida" required >
-                <label for="fechaReserva">Fecha Reserva</label>
+            <div class="form-control">
+                <label for="dias">Días de estancia</label>
+                <input type="number" name="dias" min="1" step="1" required>
               </div>
               <br>
 
@@ -72,6 +72,7 @@
               
             </select>
             <label for="tipo_cuarto">Tipo de Habitacion</label>
+            </div>
             <br>
 
             <div class="form-floating">
@@ -83,16 +84,20 @@
                     <option value="3">3</option>
                     <option value="4">4</option>
               
-            </select>
+                </select>
             <label for="cantidad_adultos">Cantidad de adultos</label>
-              </div>
-
-
+            </div>
               
           <br>
       
+            <div class="form-group">
+                <label for="titular">Nombre del titular</label>
+                <input type="text" class="form-control" name="titular" id="titular" placeholder="Nombre del titular">
+            </div>
           
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Mostrar Cuartos</button>
+        <br>
+
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Reservar</button>
           
         </form>
       </main>

@@ -86,6 +86,7 @@
                         <th>Tipo habitacion</th>
                         <th>Fecha inicio</th>
                         <th>Fecha fin</th>
+                        <th>Costo</th>
                     </tr>
                 </thead>
                 {% for reservacion in reservaciones %}
@@ -93,6 +94,7 @@
                         <td>{{ reservacion[11] }}</td>
                         <td>{{ reservacion[3] }}</td>
                         <td>{{ reservacion[4] }}</td>
+                        <td>{{ reservacion[7] }}</td>
                         <td>
                             <form action="/eliminarReservacion" method="POST">
                                 <input type="hidden" name="numero_habitacion" value="{{ reservacion[1] }}">
