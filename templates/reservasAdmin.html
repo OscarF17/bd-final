@@ -41,10 +41,7 @@
     border-collapse: collapse;
   }
   
-  td {
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
+
 </style>
 
 {% endblock %}
@@ -80,60 +77,38 @@
       </div>
     </nav>
   </header>
-<br><br><br>
-
-
-
 
 <body>
-    <div class="container">
-        <div class="top">
-            <center>
-            <h1>Reservas Cuartos</h1>
-            <br>
-            <table>
+    <center>
+        <div class="container">
+        <h1>Reservas Cuartos</h1>
+        <br>
+        <table class="table1">
+            <thead>
                 <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
+                    <th>Id usuario</th>
+                    <th>Nombre usuario</th>
+                    <th>Numero habitacion</th>
+                    <th>Fecha reservacion</th>
+                    <th>Fecha Inicio</th>
+                    <th>Titular</th>
+                    <th>Precio</th>
                 </tr>
+            </thead>
+            {% for reservacion in reservaciones %}
                 <tr>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
+                    <td>{{ reservacion[0] }}</td>
+                    <td>{{ reservacion[1] }}</td>
+                    <td>{{ reservacion[2] }}</td>
+                    <td>{{ reservacion[3] }}</td>
+                    <td>{{ reservacion[4] }}</td>
+                    <td>{{ reservacion[5] }}</td>
+                    <td>{{ reservacion[6] }}</td>
                 </tr>
-                <tr>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
-                </tr>
-              </table>
-            </center>
-        </div>
-        <div class="bottom">
-            <center>
-                <h1>Reservas Servicios</h1>
-                <br>
-                <table>
-                    <tr>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>8</td>
-                      <td>9</td>
-                    </tr>
-                  </table>
-                </center>
-        </div>
-    </div>
+            {% endfor %}
+            </table>
+            </div>
+    </center>
 </body>
 
 {% endblock %}

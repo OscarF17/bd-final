@@ -235,3 +235,18 @@ BEGIN
     UPDATE servicio SET precio=nuevo_precio WHERE id = servicio;
 END ..
 DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE obtenerReservaciones()
+BEGIN
+    SELECT usuario_id, nombre, numero_habitacion, fecha_reservacion, fecha_inicio, nombre_titular, precio_compra FROM reserva_habitacion, usuario WHERE
+    usuario_id = id;
+END ..
+DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE obtenerReservasServicios()
+BEGIN
+    SELECT * FROM contrato_servicio; 
+END ..
+DELIMITER ;

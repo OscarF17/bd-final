@@ -218,7 +218,21 @@ def actualizarServicio():
 @login_required
 def reservasAdmin():
     if current_user.username == 'pato123':
-        return render_template('reservasAdmin.html')
+        cur = db.connection.cursor()
+        cur.callproc('obtenerReservaciones')
+        reservaciones = cur.fetchall()
+        print(reservaciones)
+        print(len(reservaciones))
+        cur.nextset()
+        cur.close()
+        cur = db.connection.cursor()
+        cur.callproc('obtenerReservasServicios')
+        servicios = cur.fetchall()
+        cur.nextset()
+        print(servicios)
+        print(len(servicios))
+        cur.close()
+        return render_template('reservasAdmin.html', reservaciones=reservaciones, servicios=servicios)
     else:
         return "<h1>Acceso denegado</h1>"
 
