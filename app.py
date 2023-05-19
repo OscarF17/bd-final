@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'hotelAdmin'
 app.config['MYSQL_PASSWORD'] = '666'
-app.config['MYSQL_DB'] = 'Hotel'
+app.config['MYSQL_DB'] = 'hotel'
 app.config['SECRET_KEY'] = 'B!1w8NAt1T^%kvhUI*S^'
 
 

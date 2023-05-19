@@ -6,7 +6,7 @@ class DevelopmentConfig(Config):
     MYSQL_HOST = 'localhost'
     MYSQL_USER = 'hotelAdmin'
     MYSQL_PASSWORD = '666'
-    MYSQL_DB = 'Hotel'
+    MYSQL_DB = 'hotel'
 
 config={
     'development': DevelopmentConfig
