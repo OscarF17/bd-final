@@ -55,12 +55,11 @@ def login():
     else:
         return render_template('auth/login.html')
 
-
+### RUTAS PARA LOGIN Y CUENTAS
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
 
 @app.route('/home')
 @login_required
@@ -68,6 +67,66 @@ def home():
     print(current_user.id)
     return render_template('home.html')
 
+@app.route('/miCuenta')
+@login_required
+def miCuenta():
+    user_id = current_user.id
+    cursor = db.connection.cursor()
+    cursor.callproc('buscarReservacionesUsuario', [user_id])
+    reservaciones = cursor.fetchall()
+    cursor.nextset()
+    cursor.connection.commit()
+    cursor.close()
+    return render_template('miCuenta.html', reservaciones = reservaciones)
+
+@app.route('/actualizarInformacion', methods=['POST', 'GET'])
+@login_required
+def actualizarInformacion():
+    if request.method == 'POST':
+        user_id = current_user.id
+        nombre = request.form['nombre']
+        password = request.form['password']
+        hash = generate_password_hash(password)
+        cur = db.connection.cursor()
+        cur.callproc('actualizarDatosUsuario', [user_id, nombre, hash])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('miCuenta'))
+    else:
+        return "<h1>Acceso denegado</h1>"
+
+### RUTAS RESERVACIONES HABITACIONES
+@app.route('/reservas')
+@login_required
+def reservas():
+    return render_template('reservas.html')
+
+@app.route('/reservarHabitacion', methods=['GET', 'POST'])
+def reservarHabitacion():
+    if request.method == 'POST':
+        user_id = current_user.id
+        fecha= request.form['fechaEntrada']
+        dias = request.form['dias']
+        tipo = request.form['tipo_cuarto']
+        personas = request.form['cantidad_adultos']
+        titular = request.form['titular']
+
+        cur = db.connection.cursor()
+        cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
+        disponibilidad = cur.fetchall()
+        cur.nextset()
+        if len(disponibilidad) > 0:
+            cur.callproc("agregarReservacion", [user_id, tipo, fecha, dias, titular, personas])
+            cur.nextset()
+            cur.connection.commit()
+            cur.close()
+            return redirect(url_for('miCuenta'))
+
+        else:
+            cur.connection.commit()
+            cur.close()
+            return "No hay habitaciones disponibles en estas fechas"
 
 @app.route('/paquetes')
 @login_required
@@ -76,6 +135,7 @@ def paquetes():
     return render_template('paquetes.html')
 
 
+### RUTAS ADMIN
 @app.route('/admin')
 @login_required
 def admin():
@@ -124,48 +184,7 @@ def reservasAdmin():
         return "<h1>Acceso denegado</h1>"
 
 
-
-
-
-@app.route('/miCuenta')
-@login_required
-def miCuenta():
-    user_id = current_user.id
-    cursor = db.connection.cursor()
-    cursor.callproc('buscarReservacionesUsuario', [user_id])
-    reservaciones = cursor.fetchall()
-    cursor.nextset()
-    cursor.connection.commit()
-    cursor.close()
-    return render_template('miCuenta.html', reservaciones = reservaciones)
-
-@app.route('/reservarHabitacion', methods=['GET', 'POST'])
-def reservarHabitacion():
-    if request.method == 'POST':
-        user_id = current_user.id
-        fecha= request.form['fechaEntrada']
-        dias = request.form['dias']
-        tipo = request.form['tipo_cuarto']
-        personas = request.form['cantidad_adultos']
-        titular = request.form['titular']
-
-        cur = db.connection.cursor()
-        cur.callproc("verificarDisponibilidadSinOutput", [tipo, fecha, dias])
-        disponibilidad = cur.fetchall()
-        cur.nextset()
-        if len(disponibilidad) > 0:
-            cur.callproc("agregarReservacion", [user_id, tipo, fecha, dias, titular, personas])
-            cur.nextset()
-            cur.connection.commit()
-            cur.close()
-            return redirect(url_for('miCuenta'))
-
-        else:
-            cur.connection.commit()
-            cur.close()
-            return "No hay habitaciones disponibles en estas fechas"
-
-
+### RUTAS SERVICIOS
 @app.route('/cenotes')
 @login_required
 def cenotes():
@@ -181,12 +200,6 @@ def taxi():
 @login_required
 def bares():
     return render_template('bares.html')
-
-
-@app.route('/reservas')
-@login_required
-def reservas():
-    return render_template('reservas.html')
 
 @app.route('/comprarServicio', methods=['GET', 'POST'])
 def comprarServicio():

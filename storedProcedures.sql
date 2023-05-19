@@ -161,3 +161,14 @@ BEGIN
     UPDATE tipo_habitacion SET precio=nuevo_precio WHERE id = tipo;
 END ..
 DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE actualizarDatosUsuario(
+    IN usuario_id INT,
+    IN nuevo_nombre VARCHAR(200),
+    IN pass VARCHAR(250)
+)
+BEGIN
+    UPDATE usuario SET nombre=nuevo_nombre, password=pass WHERE id=usuario_id;
+END ..
+DELIMITER ;
