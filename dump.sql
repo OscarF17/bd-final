@@ -304,7 +304,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(100) NOT NULL,
   `password` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +313,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'oscarf17','Oscar Flores','pbkdf2:sha256:260000$Jv9FnSui5SnROakx$0b7306f9b77f9fdf1348059d9c623e739bd83e0d476e6d864602f6a619ce2798'),(2,'oscar','Oscar flores','pbkdf2:sha256:260000$DiwmrXCUWJuniOep$5779840f6fbde98794f1048dac903e5da42812ac7bf8741bb23a7531d520e259');
+INSERT INTO `usuario` VALUES (1,'oscarf17','Oscar Flores','pbkdf2:sha256:260000$Jv9FnSui5SnROakx$0b7306f9b77f9fdf1348059d9c623e739bd83e0d476e6d864602f6a619ce2798'),(2,'oscar','Oscar flores','pbkdf2:sha256:260000$DiwmrXCUWJuniOep$5779840f6fbde98794f1048dac903e5da42812ac7bf8741bb23a7531d520e259'),(3,'pato123','Administrador','pbkdf2:sha256:260000$2MvlVsoNjDExmXAT$31df09ff60e5995a946c244eba6ad4af51c86dad70929246a67ec8320bf1e507');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -326,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18 10:47:41
+-- Dump completed on 2023-05-18 18:57:47
