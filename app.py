@@ -69,6 +69,13 @@ def home():
     return render_template('home.html')
 
 
+@app.route('/paquetes')
+@login_required
+def paquetes():
+    print(current_user.id)
+    return render_template('paquetes.html')
+
+
 @app.route('/admin')
 @login_required
 def admin():
