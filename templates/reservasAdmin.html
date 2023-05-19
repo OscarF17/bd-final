@@ -1,0 +1,139 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block customCss %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sign-in.css') }}">
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .top {
+     
+        width: 100%;
+        height: 300px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bottom {
+      
+        width: 100%;
+        height: 50%;
+    }
+    table {
+    margin-top: 20px;
+    width: 450px;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+</style>
+
+{% endblock %}
+
+
+
+
+
+{% block body %}
+
+
+<header data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="home">Hotel Bonita</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="cuartosAdmin">Cuartos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="serviciosAdmin">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="reservasAdmin">Reservas</a>
+              </li>
+          </ul>
+          <a class="btn btn-outline-success" style="color:red; border-color: red;" href="{{ url_for('logout') }}">Salir</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+<br><br><br>
+
+
+
+
+<body>
+    <div class="container">
+        <div class="top">
+            <center>
+            <h1>Reservas Cuartos</h1>
+            <br>
+            <table>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                </tr>
+              </table>
+            </center>
+        </div>
+        <div class="bottom">
+            <center>
+                <h1>Reservas Servicios</h1>
+                <br>
+                <table>
+                    <tr>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>8</td>
+                      <td>9</td>
+                    </tr>
+                  </table>
+                </center>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

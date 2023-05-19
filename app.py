@@ -68,6 +68,36 @@ def home():
     print(current_user.id)
     return render_template('home.html')
 
+
+@app.route('/admin')
+@login_required
+def admin():
+    if current_user.username == 'pato123':
+        return render_template('admin.html')
+    else:
+        return "<h1>Acceso denegado</h1>"
+    
+@app.route('/serviciosAdmin')
+@login_required
+def serviciosAdmin():
+    if current_user.username == 'pato123':
+        return render_template('serviciosAdmin.html')
+    else:
+        return "<h1>Acceso denegado</h1>"
+    
+
+@app.route('/reservasAdmin')
+@login_required
+def reservasAdmin():
+    if current_user.username == 'pato123':
+        return render_template('reservasAdmin.html')
+    else:
+        return "<h1>Acceso denegado</h1>"
+
+
+
+
+
 @app.route('/miCuenta')
 @login_required
 def miCuenta():
