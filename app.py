@@ -190,10 +190,29 @@ def actualizarPrecios():
 @login_required
 def serviciosAdmin():
     if current_user.username == 'pato123':
-        return render_template('serviciosAdmin.html')
+        cur = db.connection.cursor()
+        cur.callproc('obtenerServicios')
+        servicios = cur.fetchall()
+        numServicios = len(servicios)
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return render_template('serviciosAdmin.html', servicios=servicios, numServicios=numServicios)
     else:
         return "<h1>Acceso denegado</h1>"
     
+@app.route('/actualizarServicio', methods=['GET', 'POST'])
+@login_required
+def actualizarServicio():
+    if current_user.username == 'pato123' and request.method == 'POST':
+        cur = db.connection.cursor()
+        servicio = request.form['idServicio']
+        nuevoPrecio = request.form['nuevoPrecio']
+        cur.callproc('actualizarServicio', [servicio, nuevoPrecio])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+        return redirect(url_for('serviciosAdmin'))
 
 @app.route('/reservasAdmin')
 @login_required

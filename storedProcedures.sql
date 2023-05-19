@@ -219,3 +219,19 @@ BEGIN
 END ..
 DELIMITER ;
 
+DELIMITER ..
+CREATE PROCEDURE obtenerServicios()
+BEGIN
+    SELECT * FROM servicio;
+END ..
+DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE actualizarServicio(
+    IN servicio INT,
+    IN nuevo_precio DECIMAL(10,2)
+)
+BEGIN
+    UPDATE servicio SET precio=nuevo_precio WHERE id = servicio;
+END ..
+DELIMITER ;
