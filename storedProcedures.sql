@@ -172,3 +172,21 @@ BEGIN
     UPDATE usuario SET nombre=nuevo_nombre, password=pass WHERE id=usuario_id;
 END ..
 DELIMITER ;
+
+DELIMITER ..
+CREATE PROCEDURE reservarServicio(
+    IN user_id INT,
+    IN servicio INT,
+    IN fecha DATE,
+    IN horario TIME
+)
+BEGIN
+    DECLARE fecha_actual DATE;
+    DECLARE p DECIMAL(10,2); 
+    SET fecha_actual = CURDATE(); -- Obtener la fecha actual
+    SET p = (SELECT precio FROM servicio WHERE id = servicio);
+    INSERT INTO contrato_servicio 
+    (usuario_id, servicio_id, fecha_compra, fecha_inicio, hora, precio_compra) VALUES
+    (user_id, servicio, fecha_actual, fecha, horario, p);
+END ..
+DELIMITER ;

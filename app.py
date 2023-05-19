@@ -151,7 +151,7 @@ def admin():
     else:
         return "<h1>Acceso denegado</h1>"
 
-@app.route('/actualizarPrecios', methods=['POST'])
+@app.route('/actualizarPrecios', methods=['POST','GET'])
 @login_required
 def actualizarPrecios():
     if current_user.username == 'pato123' and request.method == 'POST':
@@ -201,10 +201,27 @@ def taxi():
 def bares():
     return render_template('bares.html')
 
-@app.route('/comprarServicio', methods=['GET', 'POST'])
-def comprarServicio():
-    user_id = current_user.id
-    
+@app.route('/comprarServicio/<string:servicio_id>', methods=['GET', 'POST'])
+def comprarServicio(servicio_id):
+    if request.method == 'POST':
+        servicio = int(servicio_id)
+        print(servicio)
+        user_id = current_user.id
+        fecha_reserva = request.form['fechaReserva']
+        print(fecha_reserva)
+        hora = request.form['horario']
+        print(hora)
+        cur = db.connection.cursor()
+        cur.callproc('reservarServicio', [user_id, servicio_id, fecha_reserva, hora])
+        cur.nextset()
+        cur.connection.commit()
+        cur.close()
+
+        return redirect(url_for('miCuenta'))
+
+
+    else:
+        return "Error"
 
 @app.route('/eliminarReservacion', methods=['GET', 'POST'])
 def eliminarReservacion():
@@ -239,7 +256,9 @@ def guardarCuenta():
         cur.nextset()        
         cur.connection.commit()
         cur.close()
-    return redirect(url_for('login'))
+        return redirect(url_for('login'))
+    else:
+        return "Error"
 
 @app.route('/verificarDisponibilidad')
 def verificarDisponibilidad():

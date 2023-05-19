@@ -27,8 +27,7 @@ CREATE TABLE `contrato_servicio` (
   `servicio_id` int(11) NOT NULL,
   `fecha_compra` date NOT NULL,
   `fecha_inicio` date NOT NULL,
-  `hora` int(11) NOT NULL,
-  `nombre_titular` varchar(250) NOT NULL,
+  `hora` time DEFAULT NULL,
   `precio_compra` decimal(10,2) NOT NULL,
   PRIMARY KEY (`usuario_id`,`servicio_id`),
   KEY `servicio_id` (`servicio_id`),
@@ -43,6 +42,7 @@ CREATE TABLE `contrato_servicio` (
 
 LOCK TABLES `contrato_servicio` WRITE;
 /*!40000 ALTER TABLE `contrato_servicio` DISABLE KEYS */;
+INSERT INTO `contrato_servicio` VALUES (2,1,'2023-05-18','2023-06-03','12:00:00',500.00),(2,2,'2023-05-18','2023-06-10','03:45:00',100.00),(2,3,'2023-05-18','2023-06-10','20:00:00',200.00);
 /*!40000 ALTER TABLE `contrato_servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,7 +254,7 @@ CREATE TABLE `servicio` (
   `nombre` varchar(250) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,6 +263,7 @@ CREATE TABLE `servicio` (
 
 LOCK TABLES `servicio` WRITE;
 /*!40000 ALTER TABLE `servicio` DISABLE KEYS */;
+INSERT INTO `servicio` VALUES (1,'Tour de Cenotes',500.00),(2,'Servicio de Taxi',100.00),(3,'Tour de bares',200.00);
 /*!40000 ALTER TABLE `servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +314,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'oscarf17','Oscar Flores','pbkdf2:sha256:260000$Jv9FnSui5SnROakx$0b7306f9b77f9fdf1348059d9c623e739bd83e0d476e6d864602f6a619ce2798'),(2,'oscar','Oscar flores','pbkdf2:sha256:260000$DiwmrXCUWJuniOep$5779840f6fbde98794f1048dac903e5da42812ac7bf8741bb23a7531d520e259'),(3,'pato123','Administrador','pbkdf2:sha256:260000$2MvlVsoNjDExmXAT$31df09ff60e5995a946c244eba6ad4af51c86dad70929246a67ec8320bf1e507');
+INSERT INTO `usuario` VALUES (1,'oscarf17','Oscar Flores','pbkdf2:sha256:260000$vxNNwzVlmya8w6b8$61815f80c384ba80f00f3e7c773a4dfc2a63a8f1f781ab42fc472f42f8a9d5b5'),(2,'oscar','Oscar flores','pbkdf2:sha256:260000$DiwmrXCUWJuniOep$5779840f6fbde98794f1048dac903e5da42812ac7bf8741bb23a7531d520e259'),(3,'pato123','Administrador','pbkdf2:sha256:260000$2MvlVsoNjDExmXAT$31df09ff60e5995a946c244eba6ad4af51c86dad70929246a67ec8320bf1e507');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -326,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-18 21:34:41
+-- Dump completed on 2023-05-18 22:36:24
